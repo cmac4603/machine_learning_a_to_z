@@ -23,3 +23,24 @@ sc_y = StandardScaler()
 y_train = sc_y.fit_transform(y_train)"""
 
 # Fitting Simple Linear Regression to the Training set
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+
+# Predicting the Test set results
+y_pred = regressor.predict(X_test)
+
+# Visualizing the Training set results
+plt.scatter(X_train, y_train, c='red')
+plt.plot(X_train, regressor.predict(X_train), c='blue')
+plt.title('Salary vs Experience (Training Set)')
+plt.xlabel('Years of experience')
+plt.ylabel('Salary')
+plt.show()
+
+plt.scatter(X_test, y_test, c='red')
+plt.plot(X_train, regressor.predict(X_train), c='blue')
+plt.title('Salary vs Experience (Test Set)')
+plt.xlabel('Years of experience')
+plt.ylabel('Salary')
+plt.show()
